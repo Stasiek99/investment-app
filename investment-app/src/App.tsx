@@ -1,6 +1,35 @@
+import { useState } from "react";
+
+import Header from "./components/Header.tsx";
+import UserInput from "./components/UserInput.tsx";
+import Results from "./components/Results.tsx";
+
 function App() {
+    const [userInput, setUserInput] = useState({
+        initialInvestment: 10000,
+        annualInvestment: 1200,
+        expectedReturn: 6,
+        duration: 10
+    });
+
+    const inputIsValid = userInput.duration >= 1;
+
+    function handleChange(inputIdentifier: string, newValue: string) {
+        setUserInput(prevUserInput => {
+            return {
+                ...prevUserInput,
+                [inputIdentifier]: +newValue
+            };
+        });
+    }
+
     return (
-        <h1>React Investment Calculator</h1>
+        <>
+            <Header></Header>
+            <UserInput userInput={userInput} onChange={handleChange}></UserInput>
+            {!inputIsValid && <p className="center">Please enter a duration greater than zero</p>}
+            {inputIsValid && <Results input={userInput}></Results>}
+        </>
     )
 }
 
