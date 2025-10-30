@@ -1,0 +1,1 @@
+export { default as InvestmentsCalculatorPage } from "./pages/InvestmentsCalculatorPage";
