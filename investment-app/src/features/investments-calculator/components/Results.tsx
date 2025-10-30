@@ -1,4 +1,4 @@
-import {calculateInvestmentResults, formatter} from "../util/investment.ts";
+import {calculateInvestmentResults, formatter} from "../utils/investment.ts";
 
 export default function Results({ input }) {
     const resultsData = calculateInvestmentResults(input);
