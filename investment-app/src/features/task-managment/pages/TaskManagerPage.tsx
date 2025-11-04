@@ -1,3 +1,4 @@
+import "../styles.css";
 import { useState } from "react";
 
 import ProjectsSidebar from "../components/ProjectsSidebar.tsx";
@@ -28,7 +29,7 @@ export default function TaskManagerPage() {
     }
 
     return (
-        <main className="h-screen my-8 flex gap-8">
+        <main className="main">
             <ProjectsSidebar onStartAddProject={handleStartAddProject}/>
             {content}
         </main>
