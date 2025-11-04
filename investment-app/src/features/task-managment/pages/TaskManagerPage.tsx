@@ -1,10 +1,37 @@
+import "../styles.css";
+import { useState } from "react";
+
+import ProjectsSidebar from "../components/ProjectsSidebar.tsx";
+import NewProject from "../components/NewProject.tsx";
+import NoProjectsSelected from "../components/NoProjectsSelected.tsx";
+
 export default function TaskManagerPage() {
+    const [projectsState, setProjectsState] = useState({
+        selectedProjectId: undefined,
+        projects: [],
+    });
+
+    function handleStartAddProject() {
+        setProjectsState(prevState => {
+            return {
+                ...prevState,
+                selectedProjectId: null
+            };
+        });
+    }
+
+    let content;
+
+    if (projectsState.selectedProjectId === null) {
+        content = <NewProject />;
+    } else if (projectsState.selectedProjectId === undefined) {
+        content = <NoProjectsSelected />;
+    }
+
     return (
-        <div className="p-8">
-            <h2 className="text-3xl font-bold mb-4">Task Management</h2>
-            <p className="text-grey-600">
-                Here you’ll be able to create and manage tasks related to your investment projects.
-            </p>
-        </div>
+        <main className="main">
+            <ProjectsSidebar onStartAddProject={handleStartAddProject}/>
+            {content}
+        </main>
     );
 }
