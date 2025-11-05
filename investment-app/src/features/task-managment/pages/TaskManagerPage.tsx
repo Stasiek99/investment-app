@@ -15,7 +15,32 @@ export default function TaskManagerPage() {
         setProjectsState(prevState => {
             return {
                 ...prevState,
-                selectedProjectId: null
+                selectedProjectId: null,
+            };
+        });
+    }
+
+    function handleCancelAddProject() {
+        setProjectsState(prevState => {
+            return {
+                ...prevState,
+                selectedProjectId: undefined,
+            };
+        });
+    }
+
+    function handleAddProject(projectData) {
+        setProjectsState(prevState => {
+            const projectId = Math.random();
+            const newProject = {
+                ...projectData,
+                id: projectId,
+            };
+
+            return {
+                ...prevState,
+                selectedProjectId: undefined,
+                projects: [...prevState.projects, newProject]
             };
         });
     }
@@ -23,14 +48,14 @@ export default function TaskManagerPage() {
     let content;
 
     if (projectsState.selectedProjectId === null) {
-        content = <NewProject />;
+        content = <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject}/>;
     } else if (projectsState.selectedProjectId === undefined) {
-        content = <NoProjectsSelected />;
+        content = <NoProjectsSelected onStartAddProject={handleStartAddProject}/>;
     }
 
     return (
         <main className="main">
-            <ProjectsSidebar onStartAddProject={handleStartAddProject}/>
+            <ProjectsSidebar onStartAddProject={handleStartAddProject} projects={projectsState.projects}/>
             {content}
         </main>
     );
