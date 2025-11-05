@@ -2,7 +2,7 @@ import "../styles.css";
 import noProjectImage from "../../../assets/no-projects.png";
 import Button from "./Button.tsx";
 
-export default function NoProjectsSelected(onStartAddProject) {
+export default function NoProjectsSelected({onStartAddProject}) {
     return <div className="no-projects">
         <img src={noProjectImage} alt="An empty task list" />
         <h2>No Projects Selected</h2>
