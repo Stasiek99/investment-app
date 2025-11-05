@@ -105,6 +105,49 @@
     font-size: 1.25rem;
     color: #e7e5e4;
 }
+.project-list {
+    margin-top: 2rem;
+}
+.project-list-item button {
+    width: 100%;
+    text-align: left;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.125rem;
+    margin: 0.25rem 0;
+    color: #a8a29e;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.project-list-item button:hover {
+    color: #e7e5e4;
+    background-color: #1c1917;
+}
+.modal h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #78716c;
+    margin: 1rem 0;
+}
+.modal p {
+    color: #a8a29e;
+    margin-bottom: 1rem;
+}
+.modal-dialog {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-color: #fafaf9;
+    color: #1c1917;
+}
+.modal-dialog::backdrop {
+    background-color: rgba(28, 25, 23, 0.9);
+}
+.modal-form {
+    margin-top: 1rem;
+    text-align: right;
+}
 .main {
     height: 100vh;
     margin: 2rem 0;
