@@ -1,3 +1,4 @@
+import "../styles.scss";
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 
@@ -15,9 +16,9 @@ const Modal = forwardRef(function Modal({ children, buttonCaption }, ref) {
     });
 
     return createPortal(
-        <dialog ref={dialog} className="modal-dialog">
+        <dialog ref={dialog} className="modal__dialog">
             {children}
-            <form method="dialog" className="modal-form">
+            <form method="dialog" className="modal__form">
                 <Button>{buttonCaption}</Button>
             </form>
         </dialog>,

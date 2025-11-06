@@ -11,7 +11,7 @@ export default function InvestmentsCalculatorPage() {
     useEffect(() => {
         const link = document.createElement("link");
         link.rel = "stylesheet";
-        link.href = new URL("../styles.css", import.meta.url).href;
+        link.href = new URL("../styles.scss", import.meta.url).href;
         document.head.appendChild(link);
 
         return () => {

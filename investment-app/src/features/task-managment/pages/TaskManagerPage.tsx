@@ -1,4 +1,4 @@
-import "../styles.css";
+import "../styles.scss";
 import { useState } from "react";
 
 import ProjectsSidebar from "../components/ProjectsSidebar.tsx";
