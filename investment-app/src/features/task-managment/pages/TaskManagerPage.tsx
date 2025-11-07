@@ -29,7 +29,14 @@ export default function TaskManagerPage() {
         });
     }
 
-    function handleDeleteTask() {}
+    function handleDeleteTask(id) {
+        setProjectsState(prevState => {
+            return  {
+                ...prevState,
+                tasks: prevState.tasks.filter((task) => task.id !== id),
+            };
+        });
+    }
 
     function handleSelectProject(id) {
         setProjectsState((prevState) => {
@@ -81,11 +88,20 @@ export default function TaskManagerPage() {
                 selectedProjectId: undefined,
                 projects: prevState.projects.filter((project) => project.id !== prevState.selectedProjectId)
             };
-    });}
+        });
+    }
 
     const selectedProject = projectsState.projects.find(project => project.id === projectsState.selectedProjectId);
 
-    let content = <SelectedProject project={selectedProject} onDelete={handleDeleteProject} onAddTask={handleAddTask} onDeleteTask={handleDeleteTask} tasks={projectsState.tasks}/>;
+    let content = (
+        <SelectedProject
+        project={selectedProject}
+        onDelete={handleDeleteProject}
+        onAddTask={handleAddTask}
+        onDeleteTask={handleDeleteTask}
+        tasks={projectsState.tasks}
+        />
+    );
 
     if (projectsState.selectedProjectId === null) {
         content = <NewProject onAdd={handleAddProject} onCancel={handleCancelAddProject}/>;
@@ -95,7 +111,12 @@ export default function TaskManagerPage() {
 
     return (
         <main className="main">
-            <ProjectsSidebar onStartAddProject={handleStartAddProject} projects={projectsState.projects} onSelectProject={handleSelectProject}/>
+            <ProjectsSidebar
+                onStartAddProject={handleStartAddProject}
+                projects={projectsState.projects}
+                onSelectProject={handleSelectProject}
+                selectedProjectId={projectsState.selectedProjectId}
+            />
             {content}
         </main>
     );
