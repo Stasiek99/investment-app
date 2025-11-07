@@ -1,4 +1,4 @@
-import "../styles.css";
+import "../styles.scss";
 import noProjectImage from "../../../assets/no-projects.png";
 import Button from "./Button.tsx";
 
